@@ -2,6 +2,7 @@ import { UserButton, auth } from '@clerk/nextjs';
 import { Button } from '../components/ui/button';
 import Link from 'next/link'
 import { LogInIcon } from 'lucide-react'
+import FileUpload from '../components/ui/FileUpload';
 
 export default async function Home() {
   const { userId } = await auth()
@@ -21,7 +22,9 @@ export default async function Home() {
             <p className='max-w-xl mt-1 text-lg text-slate-600'>Harness the power of AI for instant answers to questions about any document. Query research papers, analyze contracts, summarize transcripts, and more!
             </p>
             <div className='w-full mt-4'>
-              {isAuth ? (<h1>fileupload</h1>):(
+              {isAuth ? (
+                <FileUpload/>
+              ) : (
                 <Link href="/sign-in">
                   <Button>Login to get started
                     <LogInIcon className='w-4 h-4 ml-2'/>
